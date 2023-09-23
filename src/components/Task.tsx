@@ -9,29 +9,30 @@ interface Props {
 }
 
 export default function Task({ task, taskOperation }: Props) {
-  const handleCompleteClick = () => {
+  const handleCompleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     taskOperation.updateTask(task.id, !task.completed);
   };
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     taskOperation.deleteTask(task.id);
   };
 
   return (
     <li
       className="p-3 px-4 bg-gray-300 shadow-md rounded-sm hover:bg-indigo-700 hover:text-white
-      transition-all duration-150"
+      transition-all duration-150 cursor-pointer"
+      onClick={(e) => handleCompleteClick(e)}
     >
       <div className="flex justify-between">
-        <p onClick={handleCompleteClick} className={task.completed ? 'line-through' : ''}>
-          {task.name}
-        </p>
+        <p className={task.completed ? 'line-through' : ''}>{task.name}</p>
         <div className="space-x-4">
-          <button onClick={handleCompleteClick}>
+          <button onClick={(e) => handleCompleteClick(e)}>
             {task.completed && <CheckedIcon />}
             {!task.completed && <CheckIcons />}
           </button>
-          <button onClick={handleDeleteClick}>
+          <button onClick={(e) => handleDeleteClick(e)}>
             <DeleteIcons />
           </button>
         </div>

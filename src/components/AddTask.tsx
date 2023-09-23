@@ -9,8 +9,10 @@ export default function AddTask({ addNewTask }: Props) {
 
   const handleSubmit = (e: React.MouseEvent) => {
     e.preventDefault();
-    addNewTask(newTask);
-    setNewTask('');
+    if (newTask) {
+      addNewTask(newTask);
+      setNewTask('');
+    }
   };
   return (
     <div className="">
