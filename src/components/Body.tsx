@@ -3,7 +3,7 @@ import type { Task } from '../types';
 import AddTask from './AddTask';
 import Tasks from './Tasks';
 
-export default function Body() {
+export default function Body({ status }: { status: 'all' | 'not' | 'com' }) {
   const [tasks, setTasks] = useState<Array<Task>>([]);
 
   const addNewTask = (taskName: string) => {
@@ -26,6 +26,14 @@ export default function Body() {
     setTasks(ts);
   };
 
+  const filTeresTask = () => {
+    return tasks.filter((tsk) => {
+      if (status === 'com') return tsk.completed === true;
+      else if (status === 'not') return tsk.completed === false;
+      else return true;
+    });
+  };
+
   const deleteTask = (id: string) => {
     const ts = tasks.filter((el) => el.id !== id);
     setTasks(ts);
@@ -37,7 +45,7 @@ export default function Body() {
         <AddTask addNewTask={addNewTask} />
 
         <div>
-          <Tasks tasks={tasks} taskOperations={{ updateTask, deleteTask }} />
+          <Tasks tasks={filTeresTask()} taskOperations={{ updateTask, deleteTask }} />
         </div>
       </div>
     </div>
