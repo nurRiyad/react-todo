@@ -1,9 +1,6 @@
-interface Props {
-  status: 'all' | 'not' | 'com';
-  handleStatus: (newStatus: 'all' | 'not' | 'com') => void;
-}
+import { Status } from '../types';
 
-export default function Status({ status, handleStatus }: Props) {
+export default function Status({ status, handleStatus }: Status) {
   const handleClick = (name: 'all' | 'not' | 'com') => {
     handleStatus(name);
   };

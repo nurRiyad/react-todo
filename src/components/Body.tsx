@@ -26,26 +26,25 @@ export default function Body({ status }: { status: 'all' | 'not' | 'com' }) {
     setTasks(ts);
   };
 
-  const filTeresTask = () => {
+  const deleteTask = (id: string) => {
+    const ts = tasks.filter((el) => el.id !== id);
+    setTasks(ts);
+  };
+
+  const filteredTask = () => {
     return tasks.filter((tsk) => {
       if (status === 'com') return tsk.completed === true;
       else if (status === 'not') return tsk.completed === false;
       else return true;
     });
   };
-
-  const deleteTask = (id: string) => {
-    const ts = tasks.filter((el) => el.id !== id);
-    setTasks(ts);
-  };
-
   return (
     <div className="flex-grow">
       <div className="max-w-xl mx-auto mt-2">
         <AddTask addNewTask={addNewTask} />
 
         <div>
-          <Tasks tasks={filTeresTask()} taskOperations={{ updateTask, deleteTask }} />
+          <Tasks tasks={filteredTask()} taskOperations={{ updateTask, deleteTask }} />
         </div>
       </div>
     </div>

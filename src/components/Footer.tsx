@@ -1,11 +1,7 @@
+import { Status as StatusProps } from '../types';
 import Status from './Status';
 
-interface Props {
-  status: 'all' | 'not' | 'com';
-  handleStatus: (newStatus: 'all' | 'not' | 'com') => void;
-}
-
-export default function Footer(props: Props) {
+export default function Footer(props: StatusProps) {
   return (
     <>
       <Status handleStatus={props.handleStatus} status={props.status} />
