@@ -15,13 +15,29 @@ export default function Body() {
     setTasks([...tasks, task]);
   };
 
+  const updateTask = (taskname: string, isCompleted: boolean) => {
+    const ts = tasks.map((el) => {
+      if (el.name === taskname) {
+        el.completed = isCompleted;
+      }
+      return el;
+    });
+
+    setTasks(ts);
+  };
+
+  const deleteTask = (taskName: string) => {
+    const ts = tasks.filter((el) => el.name !== taskName);
+    setTasks(ts);
+  };
+
   return (
     <div className="flex-grow">
       <div className="max-w-xl mx-auto mt-2">
         <AddTask addNewTask={addNewTask} />
 
         <div>
-          <Tasks tasks={tasks} />
+          <Tasks tasks={tasks} taskOperations={{ updateTask, deleteTask }} />
         </div>
       </div>
     </div>
