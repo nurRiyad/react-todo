@@ -1,6 +1,6 @@
-import { Status } from '../types';
+import { Status as StatusProps } from '../types';
 
-export default function Status({ status, handleStatus }: Status) {
+export default function Status({ status, handleStatus }: StatusProps) {
   const handleClick = (name: 'all' | 'not' | 'com') => {
     handleStatus(name);
   };
