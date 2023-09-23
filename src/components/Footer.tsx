@@ -6,7 +6,12 @@ export default function Footer(props: StatusProps) {
     <>
       <Status handleStatus={props.handleStatus} status={props.status} />
       <footer className="bg-indigo-700 text-white p-4">
-        <p className="text-center">Build By Md Al Asad Nur Riyad</p>
+        <p className="text-center ">
+          Build By{' '}
+          <a className="underline" href="https://github.com/nurRiyad" target="_blank">
+            Md Al Asad Nur Riyad
+          </a>
+        </p>
       </footer>
     </>
   );
