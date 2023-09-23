@@ -10,14 +10,14 @@ export default function Body() {
     const task: Task = {
       name: taskName,
       completed: false,
+      id: String(Date.now()),
     };
-
     setTasks([...tasks, task]);
   };
 
-  const updateTask = (taskname: string, isCompleted: boolean) => {
+  const updateTask = (id: string, isCompleted: boolean) => {
     const ts = tasks.map((el) => {
-      if (el.name === taskname) {
+      if (el.id === id) {
         el.completed = isCompleted;
       }
       return el;
@@ -26,8 +26,8 @@ export default function Body() {
     setTasks(ts);
   };
 
-  const deleteTask = (taskName: string) => {
-    const ts = tasks.filter((el) => el.name !== taskName);
+  const deleteTask = (id: string) => {
+    const ts = tasks.filter((el) => el.id !== id);
     setTasks(ts);
   };
 

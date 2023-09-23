@@ -10,11 +10,11 @@ interface Props {
 
 export default function Task({ task, taskOperation }: Props) {
   const handleCompleteClick = () => {
-    taskOperation.updateTask(task.name, !task.completed);
+    taskOperation.updateTask(task.id, !task.completed);
   };
 
   const handleDeleteClick = () => {
-    taskOperation.deleteTask(task.name);
+    taskOperation.deleteTask(task.id);
   };
 
   return (
