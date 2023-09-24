@@ -1,10 +1,9 @@
-import { Status as StatusProps } from '../types';
 import Status from './Status';
 
-export default function Footer(props: StatusProps) {
+export default function Footer() {
   return (
     <>
-      <Status handleStatus={props.handleStatus} status={props.status} />
+      <Status />
       <footer className="bg-indigo-700 text-white p-4">
         <p className="text-center ">
           Build By{' '}

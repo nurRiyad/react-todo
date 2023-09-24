@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import type { Task } from '../types';
 import AddTask from './AddTask';
+import { StatusContest } from './StatusContext';
 import Tasks from './Tasks';
 
-export default function Body({ status }: { status: 'all' | 'not' | 'com' }) {
+export default function Body() {
   const [tasks, setTasks] = useState<Array<Task>>([]);
+  const status = useContext(StatusContest);
 
   const addNewTask = (taskName: string) => {
     const task: Task = {
@@ -42,7 +44,6 @@ export default function Body({ status }: { status: 'all' | 'not' | 'com' }) {
     <div className="flex-grow">
       <div className="max-w-xl mx-auto mt-2">
         <AddTask addNewTask={addNewTask} />
-
         <div>
           <Tasks tasks={filteredTask()} taskOperations={{ updateTask, deleteTask }} />
         </div>

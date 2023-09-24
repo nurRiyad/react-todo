@@ -1,8 +1,14 @@
-import { Status as StatusProps } from '../types';
+import { useContext } from 'react';
+import { StatusContest, StatusUpdateContext } from './StatusContext';
 
-export default function Status({ status, handleStatus }: StatusProps) {
+export default function Status() {
+  const status = useContext(StatusContest);
+  const statusUpdate = useContext(StatusUpdateContext);
+
   const handleClick = (name: 'all' | 'not' | 'com') => {
-    handleStatus(name);
+    if (statusUpdate) {
+      statusUpdate(name);
+    }
   };
 
   return (
